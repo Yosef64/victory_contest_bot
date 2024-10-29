@@ -50,7 +50,8 @@ async def webhook(webhook_data: TelegramWebhook, background_tasks: BackgroundTas
 
     update = Update.de_json(webhook_data.dict(), bot)
 
-    background_tasks.add_task(application.process_update, update)
+    await application.process_update(update)
+    
     return {"message": "ok"}
 
 
