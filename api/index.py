@@ -56,4 +56,4 @@ async def webhook(webhook_data: TelegramWebhook, background_tasks: BackgroundTas
 
 @app.get("/")
 def index():
-    return {"message": "Hello World"}
+    return {"message": "Hello All Developers"}
