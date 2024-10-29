@@ -44,8 +44,8 @@ async def webhook(webhook_data: TelegramWebhook, background_tasks: BackgroundTas
     """
     Telegram Webhook
     """
-    bot = Bot(token=TOKEN)
-    application = ApplicationBuilder().token(TOKEN).build()
+    bot = Bot(token="7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA")
+    application = ApplicationBuilder().token("7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA").build()
     register_handlers(application)
 
     update = Update.de_json(webhook_data.dict(), bot)
