@@ -38,7 +38,7 @@ def register_handlers(dispatcher):
     dispatcher.add_handler(start_handler)
 
 @app.post("/webhook")
-async def webhook(webhook_data: TelegramWebhook, background_tasks: BackgroundTasks):
+async def webhook(request: Request, background_tasks: BackgroundTasks):
     """
     Telegram Webhook
     """
@@ -46,7 +46,9 @@ async def webhook(webhook_data: TelegramWebhook, background_tasks: BackgroundTas
     application = ApplicationBuilder().token(TOKEN).build()
     register_handlers(application)
 
-    update = Update.de_json(webhook_data.dict(), bot)
+    # Parse the JSON payload directly from the request
+    request_data = await request.json()
+    update = Update.de_json(request_data, bot)
 
     await application.process_update(update)
     
