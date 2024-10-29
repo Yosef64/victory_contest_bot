@@ -6,8 +6,6 @@ from pydantic import BaseModel
 from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-TOKEN = os.environ.get("TOKEN")
-
 app = FastAPI()
 
 TOKEN = '7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA'
@@ -44,8 +42,8 @@ async def webhook(webhook_data: TelegramWebhook, background_tasks: BackgroundTas
     """
     Telegram Webhook
     """
-    bot = Bot(token="7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA")
-    application = ApplicationBuilder().token("7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA").build()
+    bot = Bot(token=TOKEN)
+    application = ApplicationBuilder().token(TOKEN).build()
     register_handlers(application)
 
     update = Update.de_json(webhook_data.dict(), bot)
