@@ -30,7 +30,7 @@ async def process_update(request: Request):
     await ptb.process_update(update)
     return Response(status_code=HTTPStatus.OK)
 @app.get("/")
-def first(request):
+def index(request):
     return {"status":"success"}
 async def start(update, _: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /start is issued."""
