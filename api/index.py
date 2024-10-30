@@ -21,6 +21,7 @@ async def process_update(request: Request):
     .get_updates_read_timeout(42)
     .build()
    )
+    await ptb.initialize()
     ptb.add_handler(CommandHandler("start", start))
     req = await request.json()
     
