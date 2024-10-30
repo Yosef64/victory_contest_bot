@@ -1,59 +1,39 @@
-import json
-import os
-from typing import Optional
-from fastapi import FastAPI, Request, BackgroundTasks
-from pydantic import BaseModel
-from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from contextlib import asynccontextmanager
+from http import HTTPStatus
+from telegram import Update
+from telegram.ext import Application, CommandHandler
+from telegram.ext._contexttypes import ContextTypes
+from fastapi import FastAPI, Request, Response
 
-app = FastAPI()
+ptb = (
+    Application.builder()
+    .updater(None)
+    .token("7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA") 
+    .read_timeout(7)
+    .get_updates_read_timeout(42)
+    .build()
+)
 
-TOKEN = '7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA'
-WEBHOOK_URL = 'https://jositgwebapp.vercel.app/api/index'
-bot = Bot(token=TOKEN)
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    await ptb.bot.setWebhook() 
+    async with ptb:
+        await ptb.start()
+        yield
+        await ptb.stop()
 
-class TelegramWebhook(BaseModel):
-    """
-    Telegram Webhook Model using Pydantic for request body validation
-    """
-    update_id: int
-    message: Optional[dict]
-    edited_message: Optional[dict]
-    channel_post: Optional[dict]
-    edited_channel_post: Optional[dict]
-    inline_query: Optional[dict]
-    chosen_inline_result: Optional[dict]
-    callback_query: Optional[dict]
-    shipping_query: Optional[dict]
-    pre_checkout_query: Optional[dict]
-    poll: Optional[dict]
-    poll_answer: Optional[dict]
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    keyboard = [[InlineKeyboardButton("Visit Web App", web_app={"url": "https://josialex.vercel.app/"})]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text("Welcome! Click the button below to visit our web app.", reply_markup=reply_markup)
-def register_handlers(dispatcher):
-    start_handler = CommandHandler('start', start)
-    dispatcher.add_handler(start_handler)
-
-@app.post("/webhook")
-def webhook(request: Request, background_tasks: BackgroundTasks):
-    """
-    Telegram Webhook
-    """
-    bot = Bot(token=TOKEN)
-    application = ApplicationBuilder().token(TOKEN).build()
-    register_handlers(application)
-
-    request_data = request.json()
-    update = Update.de_json(request_data, bot)
-
-    application.process_update(update)
-    
-    return {"message": "ok"}
-
-
+app = FastAPI(lifespan=lifespan)
+@app.post("/")
+async def process_update(request: Request):
+    req = await request.json()
+    update = Update.de_json(req, ptb.bot)
+    await ptb.process_update(update)
+    return Response(status_code=HTTPStatus.OK)
 @app.get("/")
-def index():
-    return {"message": "Hello All Developers"}
+def first(request):
+    return {"status":"success"}
+async def start(update, _: ContextTypes.DEFAULT_TYPE):
+    """Send a message when the command /start is issued."""
+    await update.message.reply_text("starting...")
+
+ptb.add_handler(CommandHandler("start", start))
