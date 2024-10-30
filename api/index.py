@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from http import HTTPStatus
-from telegram import Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler
 from telegram.ext._contexttypes import ContextTypes
 from fastapi import FastAPI, Request, Response
@@ -9,8 +9,9 @@ from fastapi import FastAPI, Request, Response
 
 app = FastAPI()
 async def start(update, _: ContextTypes.DEFAULT_TYPE):
-    """Send a message when the command /start is issued."""
-    await update.message.reply_text("starting...") 
+    keyboard = [[InlineKeyboardButton("Visit Web App", web_app={"url": "https://josialex.vercel.app/"})]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text("Welcome! Click the button below to visit our web app.", reply_markup=reply_markup)
 @app.post("/")
 async def process_update(request: Request):
     ptb = (
