@@ -7,11 +7,12 @@ router = APIRouter()
 
 @router.post("/webhook")
 async def webhook(request: Request):
-    ptb = startup_boot()
-    req = await request.json()
+    ptb = await startup_boot()  
+    req = await request.json()  
     
-    update = Update.de_json(req, ptb.bot)
+    update = Update.de_json(req, ptb.bot) 
     await ptb.process_update(update)
+
     return Response(status_code=HTTPStatus.OK)
     
 @router.get("/")

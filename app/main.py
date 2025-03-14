@@ -10,3 +10,5 @@ app = FastAPI()
 
 app.include_router(router=router)
 
+#https://api.telegram.org/bot7897490261:AAFMKWSSK0wHuSHlROpQH5WW9v4VsSTlkoA/setWebhook?url=https://victory-fast.vercel.app/webhook
+
