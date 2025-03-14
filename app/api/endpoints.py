@@ -7,13 +7,17 @@ router = APIRouter()
 
 @router.post("/webhook")
 async def webhook(request: Request):
-    ptb = await startup_boot()  
-    req = await request.json()  
-    
-    update = Update.de_json(req, ptb.bot) 
-    await ptb.process_update(update)
+    try:
+        ptb = await startup_boot()  
+        req = await request.json()  
+        
+        update = Update.de_json(req, ptb.bot) 
+        await ptb.process_update(update)
 
-    return Response(status_code=HTTPStatus.OK)
+        return Response(status_code=HTTPStatus.OK)
+    except Exception as e:
+        print(e)
+        Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR)
     
 @router.get("/")
 async def root(request:Request):
