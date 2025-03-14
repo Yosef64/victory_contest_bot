@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from fastapi import APIRouter, Request, Response
 from telegram import Update
-from app.bot.telegram import startup_boot, updater
+from app.bot.telegram import startup_boot
 
 router = APIRouter()
 
