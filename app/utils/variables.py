@@ -1,6 +1,6 @@
 
 welcom_text = """
-🎉 Hey there, Champion! Welcome to [Your Contest Bot Name]! 🎉
+🎉 Hey there, Champion! Welcome to Victory Contest! 🎉
 
 We’re thrilled to have you here! 🚀 This is not just any contest—this is your chance to show off your skills, challenge yourself, and rise to the top! 🏆
 
