@@ -5,7 +5,7 @@ from app.utils.variables import welcome_back_txt,welcom_text
 async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
     user_id = str(update.message.from_user.id)
     try:
-        user = check_user_register(user_id)
+        user = await check_user_register(user_id)
         if user:
             await update.message.reply_text(welcome_back_txt)
             return
