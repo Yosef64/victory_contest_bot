@@ -1,6 +1,6 @@
 from telegram.ext import Application, CommandHandler
 
-from app.bot import handlers
+from app.bot.handlers import handlers
 
 
 async def startup_boot():
