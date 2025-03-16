@@ -10,7 +10,7 @@ async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(welcome_back_txt)
             return
         
-        keyboard = [[InlineKeyboardButton("⚡ Register Now 💥", web_app={"url": "https://victory-contest.vercel.app/"})]]
+        keyboard = [[InlineKeyboardButton("⚡ Register Now 💥", web_app={"url": f"https://victory-contest.vercel.app/register?tele_id={user_id}"})]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(welcom_text, reply_markup=reply_markup)
     except Exception as e:
