@@ -2,7 +2,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackContext,ContextTypes
 from app.utils.helpers import check_user_register
 from app.utils.variables import welcome_back_txt,welcom_text
-from app.config.setting import BASE_API_URL
+from app.config.setting import MINI_APP_URL
 async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
     user_id = str(update.message.from_user.id)
     try:
@@ -11,7 +11,7 @@ async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(welcome_back_txt)
             return
         
-        keyboard = [[InlineKeyboardButton("⚡ Register Now 💥", web_app={"url": f"{BASE_API_URL}/register?tele_id={user_id}"})]]
+        keyboard = [[InlineKeyboardButton("⚡ Register Now 💥", web_app={"url": f"{MINI_APP_URL}/register?tele_id={user_id}"})]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(welcom_text, reply_markup=reply_markup)
     except Exception as e:
