@@ -4,8 +4,12 @@ from app.utils.helpers import check_user_register
 from app.utils.variables import welcome_back_txt,welcom_text
 from app.config.setting import MINI_APP_URL
 def getmarkup():
-    keyboard = [[ReplyKeyboardMarkup("Start"),ReplyKeyboardMarkup("Profile")],[ReplyKeyboardMarkup("Statistics"),ReplyKeyboardMarkup("Last Contest")],[ReplyKeyboardMarkup("Leaderboard")]]
-    reply_markup = ReplyKeyboardMarkup(keyboard)
+    keyboard = [
+        ["Start", "Profile"],
+        ["Statistics", "Last Contest"],
+        ["Leaderboard"]
+    ]
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     return reply_markup
 async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
     user_id = str(update.message.from_user.id)
