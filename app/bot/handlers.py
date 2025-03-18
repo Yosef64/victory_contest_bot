@@ -33,7 +33,7 @@ async def profile(update:Update,context:CallbackContext):
     user = update.effective_user
     full_name = user.full_name
     username = f"@{user.username}" if user.username else "No username"
-
+    userId = str(user.id)
     message = (
         f"🔥 **Hey {full_name}, your profile is calling!** 🌟\n\n"
         "🚀 **Unleash your best self!** With just one tap, you can:\n"
@@ -47,7 +47,7 @@ async def profile(update:Update,context:CallbackContext):
     )
 
     keyboard = [
-        [InlineKeyboardButton("🔥 View Profile 👀", web_app={"url":f"{MINI_APP_URL}/profile"})],
+        [InlineKeyboardButton("🔥 View Profile 👀", web_app={"url":f"{MINI_APP_URL}/profile/{userId}"})],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
