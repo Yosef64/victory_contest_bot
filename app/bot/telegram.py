@@ -1,6 +1,6 @@
 from telegram.ext import Application, CommandHandler
 
-from app.bot.handlers import handlers
+from app.bot.options import botHandlers
 
 
 async def startup_boot():
@@ -13,6 +13,6 @@ async def startup_boot():
     .build()
    )
     await ptb.initialize()
-    for handler in handlers:
+    for handler in botHandlers:
         ptb.add_handler(handler)
     return ptb
