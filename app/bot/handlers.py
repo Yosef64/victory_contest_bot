@@ -15,6 +15,7 @@ async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(welcom_text, reply_markup=reply_markup)
     except Exception as e:
+        
         await update.message.reply_text(e.__str__())
 
 handlers = [
