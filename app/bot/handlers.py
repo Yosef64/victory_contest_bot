@@ -51,5 +51,5 @@ async def profile(update:Update,context:CallbackContext):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text(message, reply_markup=reply_markup, parse_mode="Markdown")
+    await update.message.reply_text(message, reply_markup=reply_markup, parse_mode="Markdown")
     
