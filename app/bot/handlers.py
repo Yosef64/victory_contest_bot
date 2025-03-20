@@ -36,7 +36,7 @@ async def profile(update:Update,context:CallbackContext):
     username = f"@{user.username}" if user.username else ""
     userId = str(user.id)
     message = (
-        """🔥 **Hey {full_name}, your profile is calling\!** 🌟\n\n
+        rf"""🔥 **Hey {full_name}, your profile is calling\!** 🌟\n\n
         🚀 **Unleash your best self\!** With just one tap, you can\:\n
         🔥 **View your full profile** 👀\n
         💎 **Customize your settings** ⚙️\n
@@ -79,7 +79,7 @@ async def leaderboard(update:Update,context:CallbackContext):
     user = update.effective_user
     full_name ,user_id = user.full_name,user.id
     message = (
-        r"""🥇 **Hey {full_name}, the competition is heating up\!** 🔥\n\n
+        rf"""🥇 **Hey {full_name}, the competition is heating up\!** 🔥\n\n
         🏆 **Welcome to the Leaderboard\!** Here’s how the rankings stand\:\n\n
         📅 **Today's Contest Ranking\:** 🚀\n
         📆 **Weekly Top Performers\:** 🔥\n
