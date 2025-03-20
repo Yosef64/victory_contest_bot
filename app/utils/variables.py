@@ -38,7 +38,7 @@ error_message = (
 rules = (
     f"""📜 *Contest Rules \\& Guidelines* ⚖️\n\n
     🚀 *Ready to compete? Make sure you follow these rules\\!*\n\n
-    1️⃣ *One Account\\, One Contest!* ❌🆕\n"
+    1️⃣ *One Account\\, One Contest\\!* ❌🆕\n"
        \\- You *CANNOT* enter the contest using *multiple accounts* at the same time\\.\n\n
     2️⃣ *No Late Entries\\!* ⏳🚫\n
        \\- Once the contest *ends*\\, you *cannot access it* anymore\\.\n\n
