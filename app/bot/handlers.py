@@ -26,8 +26,8 @@ async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(welcom_text, reply_markup=reply_markup,parse_mode="MarkdownV2")
     except Exception as e:
-        
-        await update.message.reply_text(e.__str__())
+        await update.message.reply_text(error_message,parse_mode="MarkdownV2")
+        print(e)
 
 
 async def profile(update:Update,context:CallbackContext):
@@ -86,7 +86,7 @@ async def leaderboard(update:Update,context:CallbackContext):
         📊 *Monthly Champions\\:* 🏅\n\n
         💡 *Stay consistent and climb the ranks\\!* Every contest is a chance to rise higher\\! \n
         ⚡ *Think you can be the best?* Keep pushing your limits and dominate the leaderboard\\! \n\n
-        Tap below to check the full rankings\\!*"""
+        *Tap below to check the full rankings\\!*"""
     )
     try:
         keyboard = [
@@ -97,7 +97,7 @@ async def leaderboard(update:Update,context:CallbackContext):
         return
     except Exception as e:
         print(e)
-        await update.message.reply_text(error_message)
+        await update.message.reply_text(error_message,parse_mode="MarkdownV2")
         return
 
 
@@ -107,6 +107,7 @@ async def rulesAndRegulations(update:Update,context:CallbackContext):
         await update.message.reply_text(rules,parse_mode="MarkdownV2")
         return
     except Exception as e:
+        await update.message.reply_text(error_message,parse_mode="MarkdownV2")
         print(e)
     return
         
