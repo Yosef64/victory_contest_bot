@@ -18,7 +18,7 @@ async def start(update:Update,_:ContextTypes.DEFAULT_TYPE):
         user = await check_user_register(user_id)
         if user:
             reply_markup = getmarkup()
-            await update.message.reply_text(welcome_back_txt,reply_markup=reply_markup)
+            await update.message.reply_text(welcome_back_txt,reply_markup=reply_markup,parse_mode="MarkdownV2")
             return
         
         keyboard = [[InlineKeyboardButton("⚡ Register Now 💥", web_app={"url": f"{MINI_APP_URL}/register?tele_id={user_id}"})]]
@@ -44,7 +44,7 @@ async def profile(update:Update,context:CallbackContext):
         🎯 *Boost your bio* 📝\n
         📸 *Refresh your profile picture* 🔄\n
         🎨 *Level up your preferences* 💡\n\n
-        ⚡ *Your profile, your power\\!* Ready to take control? Tap below\\! ⬇️🔥"""
+        ⚡ *Your profile, your power\\! Ready to take control? Tap below\\!* ⬇️🔥"""
     )
 
     keyboard = [
@@ -102,8 +102,12 @@ async def leaderboard(update:Update,context:CallbackContext):
 
 
 async def rulesAndRegulations(update:Update,context:CallbackContext):
-    
-    await update.message.reply_text(rules,parse_mode="MarkdownV2")
+    try:
+
+        await update.message.reply_text(rules,parse_mode="MarkdownV2")
+        return
+    except Exception as e:
+        print(e)
     return
         
         
