@@ -64,7 +64,7 @@ async def statistics(update:Update,context:CallbackContext):
         🏅 **Total Contests Participated\:** 🔢\n
         ⚡ **The Time You Spent\:** 🥇\n
         📈 **Average Performance Score\:** 📊\n
-        ❌ **Total Missed Questions** (Based on Grade, Chapter, Subject)\: 📚📌\n\n
+        ❌ **Total Missed Questions** \(Based on Grade, Chapter, Subject\)\: 📚📌\n\n
         🎯 **Keep pushing the limits\!** Every contest is a chance to grow\! 💪\n
         💡 **Want to improve?** Check past results and track progress\! 🚀\n\n
         Tap below to view full statistics ⬇️📊"""
