@@ -36,15 +36,15 @@ async def profile(update:Update,context:CallbackContext):
     username = f"@{user.username}" if user.username else ""
     userId = str(user.id)
     message = (
-        f"""🔥 *Hey {full_name}, your profile is calling\\!* 🌟\n\n
-        🚀 *Unleash your best self\\!* With just one tap, you can\:\n
+        f"""🌟 *Hey {full_name}, your profile is calling\\!* 🌟\n\n
+        *Unleash your best self\\!* With just one tap, you can\\:\n
         🔥 *View your full profile* 👀\n
-        💎 *Customize your settings* ⚙️\n
-        💥 *Edit your profile like a boss* ✨\n\n
-        🎯 *Boost your bio* 📝\n
-        📸 *Refresh your profile picture* 🔄\n
-        🎨 *Level up your preferences* 💡\n\n
-        ⚡ *Your profile, your power\\! Ready to take control? Tap below\\!* ⬇️🔥"""
+        ⚙️ *Customize your settings* \n
+        ✨ *Edit your profile like a boss* \n\n
+        🎯 *Boost your bio* \n
+        📸 *Refresh your profile picture* \n
+        🎨 *Level up your preferences* \n\n
+        ⚡ *Your profile, your power\\! Ready to take control? Tap below\\!* ⬇️"""
     )
 
     keyboard = [
@@ -61,13 +61,13 @@ async def statistics(update:Update,context:CallbackContext):
 
     message = (
         f"""🔥 *Your performance stats are in\\!* Here’s what you can check\\:\n"
-        🏅 *Total Contests Participated\\:* 🔢\n
-        ⚡ *The Time You Spent\\:* 🥇\n
-        📈 *Average Performance Score\\:* 📊\n
-        ❌ *Total Missed Questions* \\(Based on Grade, Chapter, Subject\\)\\: 📚📌\n\n
-        🎯 *Keep pushing the limits\\!* Every contest is a chance to grow\\! 💪\n
-        💡 *Want to improve?* Check past results and track progress\\! 🚀\n\n
-        Tap below to view full statistics ⬇️📊"""
+        🏅 *Total Contests Participated\\:* \n
+        ⚡ *The Time You Spent\\:* \n
+        📈 *Average Performance Score\\:* \n
+        ❌ *Total Missed Questions* \\(Based on Grade, Chapter, Subject\\)\\: \n\n
+        💪 *Keep pushing the limits\\!* Every contest is a chance to grow\\! 💪\n
+        💡 *Want to improve?* Check past results and track progress\\! \n\n
+        *Tap below to view full statistics\\!*"""
     )
     keyboard = [
         [InlineKeyboardButton("📊 View Statistics 👀", web_app={"url":f"{MINI_APP_URL}/statistics/{user_id}"})],
@@ -81,12 +81,12 @@ async def leaderboard(update:Update,context:CallbackContext):
     message = (
         f"""🥇 *Hey {full_name}, the competition is heating up\\!* 🔥\n\n
         🏆 *Welcome to the Leaderboard\\!* Here’s how the rankings stand\\:\n\n
-        📅 *Today's Contest Ranking\\:* 🚀\n
-        📆 *Weekly Top Performers\\:* 🔥\n
+        📅 *Today's Contest Ranking\\:* \n
+        📆 *Weekly Top Performers\\:* \n
         📊 *Monthly Champions\\:* 🏅\n\n
-        💡 *Stay consistent and climb the ranks\\!* Every contest is a chance to rise higher\\! 📈\n
-        ⚡ *Think you can be the best?* Keep pushing your limits and dominate the leaderboard\\! 💪\n\n
-        Tap below to check the full rankings ⬇️🏆"""
+        💡 *Stay consistent and climb the ranks\\!* Every contest is a chance to rise higher\\! \n
+        ⚡ *Think you can be the best?* Keep pushing your limits and dominate the leaderboard\\! \n\n
+        Tap below to check the full rankings\\!*"""
     )
     try:
         keyboard = [

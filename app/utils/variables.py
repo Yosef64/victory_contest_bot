@@ -22,8 +22,8 @@ welcome_back_txt = """
 Great to see you again\\! 🎉 We know you’re here to win\\, learn\\, and level up\\, and we’re ready to challenge you\\!
 
 🚀 What’s next?
-✅ Jump back into the contest and keep climbing the leaderboard 🏆
-✅ Test your skills with new challenges 💡
+✅ Jump back into the contest and keep climbing the leaderboard 
+✅ Test your skills with new challenges 
 ✅ Stay ahead of the competition \\& claim your spot at the top\\!
 
 Are you ready? Let’s get back in the game\\! 🎯💥
