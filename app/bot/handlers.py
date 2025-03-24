@@ -90,7 +90,7 @@ async def leaderboard(update:Update,context:CallbackContext):
     )
     try:
         keyboard = [
-        [InlineKeyboardButton("🔥 View Leaderboard 👀", web_app={"url":f"{MINI_APP_URL}/statistics/{user_id}"})],
+        [InlineKeyboardButton("🔥 View Leaderboard 👀", web_app={"url":f"{MINI_APP_URL}/leaderboard?tele_id={user_id}"})],
     ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(message,reply_markup=reply_markup,parse_mode="MarkdownV2")
